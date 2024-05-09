@@ -11,7 +11,6 @@ jobs:
     if: github.event.discussion && !github.event.comment
     steps:
       - run: |
-          echo "Issue creator: ${{ toJson(github.event) }}"
           curl --location --request POST '${{ secrets.WEBHOOK }}' \
           --header 'Content-Type: application/json' \
           --data-raw '{
@@ -30,7 +29,6 @@ jobs:
     if: github.event.discussion && github.event.comment
     steps:
       - run: |
-          echo "Issue creator: ${{ toJson(github.event) }}"
           curl --location --request POST '${{ secrets.WEBHOOK }}' \
           --header 'Content-Type: application/json' \
           --data-raw '{
