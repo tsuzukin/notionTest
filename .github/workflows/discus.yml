@@ -32,7 +32,7 @@ jobs:
                                       "buttons": [
                                           {
                                               "textButton": {
-                                                  "text": "OPEN DISCUSSION",
+                                                  "text": "Discussionsを開く",
                                                   "onClick": {
                                                       "openLink": {
                                                           "url": "${{ github.event.discussion.html_url }}"
@@ -68,7 +68,7 @@ jobs:
                                       "buttons": [
                                           {
                                               "textButton": {
-                                                  "text": "OPEN DISCUSSION",
+                                                  "text": "コメントを見る",
                                                   "onClick": {
                                                       "openLink": {
                                                           "url": "${{ github.event.comment.html_url }}"
