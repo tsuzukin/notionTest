@@ -15,7 +15,7 @@ jobs:
           echo "Issue creator: ${{ toJson(github.event) }}"
           echo "Issue title: ${{ github.event.discussion.title }}"
           echo "Issue number: ${{ github.event.discussion.html_url }}"
-    - name: Google Chat Notification
+    - name: Git Disc. created
       if: github.event.discussion && !github.event.comment
       run: |
           curl --location --request POST '${{ secrets.WEBHOOK }}' \
@@ -38,6 +38,42 @@ jobs:
                                                   "onClick": {
                                                       "openLink": {
                                                           "url": "${{ github.event.discussion.html_url }}"
+                                                      }
+                                                  }
+                                              }
+                                          }
+                                      ]
+                                  }
+                              ]
+                          }
+                      ]
+                  }
+              ]
+          }'
+          
+    - name: Git Disc. commented
+      if: github.event.discussion && github.event.comment
+      run: |
+          curl --location --request POST '${{ secrets.WEBHOOK }}' \
+          --header 'Content-Type: application/json' \
+          --data-raw '{
+              "cards": [
+                  {
+                      "header": {
+                          "title": "${{ github.event.discussion.title }}",
+                          "subtitle": "${{ github.event.discussion.comment }}"
+                      },
+                      "sections": [
+                          {
+                              "widgets": [
+                                   {
+                                      "buttons": [
+                                          {
+                                              "textButton": {
+                                                  "text": "OPEN ISSUE",
+                                                  "onClick": {
+                                                      "openLink": {
+                                                          "url": "${{ github.event.comment.html_url }}"
                                                       }
                                                   }
                                               }
