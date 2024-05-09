@@ -11,7 +11,6 @@ jobs:
     if: github.event.discussion && !github.event.comment
     steps:
       - run: |
-          # curl -X POST -d '{ "text": "Created discussion: ${{ github.event.discussion.html_url }}" }' ${{ secrets.SLACK_WEBHOOK_URL }}
           curl --location --request POST '${{ secrets.WEBHOOK }}' \
           --header 'Content-Type: application/json' \
           --data-raw '{
@@ -30,7 +29,6 @@ jobs:
     if: github.event.discussion && github.event.comment
     steps:
       - run: |
-          #curl -X POST -d '{ "text": "Created discussion comment: ${{ github.event.comment.html_url }}" }' ${{ secrets.SLACK_WEBHOOK_URL }}
           curl --location --request POST '${{ secrets.WEBHOOK }}' \
           --header 'Content-Type: application/json' \
           --data-raw '{
