@@ -20,7 +20,7 @@ jobs:
                   {
                       "header": {
                           "title": "${{ github.event.discussion.title }}",
-                          "subtitle": "${{ github.event.user.login }}によって新しいトピックが作られました"
+                          "subtitle": "${{ github.event.comment.user.login }}によって新しいトピックが作られました"
                       },
                       "sections": [
                           {
@@ -56,7 +56,7 @@ jobs:
                   {
                       "header": {
                           "title": "${{ github.event.discussion.title }}",
-                          "subtitle": "${{ github.event.user.login }}がコメントしました"
+                          "subtitle": "${{ github.event.comment.user.login }}がコメントしました"
                       },
                       "sections": [
                           {
