@@ -61,7 +61,7 @@ jobs:
                   {
                       "header": {
                           "title": "${{ github.event.discussion.title }}",
-                          "subtitle": "${{ github.event.event.comment }}"
+                          "subtitle": "${{ github.event.discussion.comment }}"
                       },
                       "sections": [
                           {
