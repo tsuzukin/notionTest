@@ -26,6 +26,26 @@ jobs:
                           "title": "${{ github.event.discussion.title }}",
                           "subtitle": "${{ github.event.discussion.html_url }}"
                       },
+                      "sections": [
+                          {
+                              "widgets": [
+                                   {
+                                      "buttons": [
+                                          {
+                                              "textButton": {
+                                                  "text": "OPEN ISSUE",
+                                                  "onClick": {
+                                                      "openLink": {
+                                                          "url": "${{ github.event.discussion.html_url }}"
+                                                      }
+                                                  }
+                                              }
+                                          }
+                                      ]
+                                  }
+                              ]
+                          }
+                      ]
                   }
               ]
           }'
