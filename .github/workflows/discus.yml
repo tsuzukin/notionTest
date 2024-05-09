@@ -9,8 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    if: github.event.discussion && !github.event.comment
     steps:
-    - name: Git Issue Details
+    - name: Git Disc. created
       run: |
           echo "Issue creator: ${{ toJson(github.event) }}"
           echo "Issue title: ${{ github.event.discussion.title }}"
@@ -24,7 +25,7 @@ jobs:
                   {
                       "header": {
                           "title": "${{ github.event.discussion.title }}",
-                          "subtitle": "${{ github.event.discussion.html_url }}"
+                          "subtitle": "${{ github.event.discussion.body }}"
                       },
                       "sections": [
                           {
