@@ -4,7 +4,7 @@ on:
     types: [created]
   discussion_comment:
     types: [created]
-    
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,7 +24,7 @@ jobs:
                   {
                       "header": {
                           "title": "${{ github.event.discussion.title }}",
-                          "URL": "${{ github.event.discussion.html_url }}"
+                          "subtitle": "${{ github.event.discussion.html_url }}"
                       },
                   }
               ]
