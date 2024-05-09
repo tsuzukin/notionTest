@@ -18,5 +18,12 @@ jobs:
           curl --location --request POST '${{ secrets.WEBHOOK }}' \
           --header 'Content-Type: application/json' \
           --data-raw '{
-            '{ "text": "Created discussion: ${{ github.event.discussion.html_url }}" }' ${{ secrets.GOOGLECHAT_WEBHOOK_URL }}
+              "cards": [
+                  {
+                      "header": {
+                          "title": "Issue Tracker",
+                          "subtitle": "Issue No: #${{ github.event.discussion  }}"
+                      },
+                  }
+              ]
           }'
