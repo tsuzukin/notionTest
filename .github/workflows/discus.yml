@@ -24,19 +24,27 @@ jobs:
                   {
                       "header": {
                           "title": "${{ github.event.discussion.title }}",
-                          buttons": [
+                      },
+                      "sections": [
+                          {
+                              "widgets": [
+                                   {
+                                      "buttons": [
                                           {
                                               "textButton": {
-                                                  "text": "OPEN ISSUE",
+                                                  "text": "OPEN DISCUSSION",
                                                   "onClick": {
                                                       "openLink": {
-                                                          "url": "${{ github.event.discussion.html_url }}"
+                                                          "url": "${{ github.event.discussion.comment.html_url }}"
                                                       }
                                                   }
                                               }
                                           }
                                       ]
-                      },
+                                  }
+                              ]
+                          }
+                      ]
                   }
               ]
           }'
