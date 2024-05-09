@@ -37,6 +37,26 @@ jobs:
                           "title": "${{ github.event.discussion.title  }}",
                           "URL": "${{ github.event.discussion.comment.html_url }}"
                       },
+                      "sections": [
+                          {
+                              "widgets": [
+                                   {
+                                      "buttons": [
+                                          {
+                                              "textButton": {
+                                                  "text": "OPEN DISCUSSION",
+                                                  "onClick": {
+                                                      "openLink": {
+                                                          "url": "${{ github.event.discussion.comment.html_url }}"
+                                                      }
+                                                  }
+                                              }
+                                          }
+                                      ]
+                                  }
+                              ]
+                          }
+                      ]
                   }
               ]
           }'
