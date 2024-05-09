@@ -9,7 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    if: github.event.discussion && !github.event.comment
     steps:
     - name: Git Disc. created
       run: |
@@ -17,6 +16,7 @@ jobs:
           echo "Issue title: ${{ github.event.discussion.title }}"
           echo "Issue number: ${{ github.event.discussion.html_url }}"
     - name: Google Chat Notification
+      if: github.event.discussion && !github.event.comment
       run: |
           curl --location --request POST '${{ secrets.WEBHOOK }}' \
           --header 'Content-Type: application/json' \
