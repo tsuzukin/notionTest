@@ -6,23 +6,40 @@ on:
     types: [created]
     
 jobs:
-  build:
+  discussion_created:
     runs-on: ubuntu-latest
-
+    if: github.event.discussion && !github.event.comment
     steps:
-    - name: Git Issue Details
-      run: |
-          echo "Issue creator: ${{ toJson(github.event.discussion) }}"
-    - name: Google Chat Notification
-      run: |
+      - run: |
+          # curl -X POST -d '{ "text": "Created discussion: ${{ github.event.discussion.html_url }}" }' ${{ secrets.SLACK_WEBHOOK_URL }}
           curl --location --request POST '${{ secrets.WEBHOOK }}' \
           --header 'Content-Type: application/json' \
           --data-raw '{
               "cards": [
                   {
                       "header": {
-                          "title": "Issue Tracker",
-                          "subtitle": "Issue No: #${{ toJson(github.event.discussion)  }}"
+                          "title": "#${{ github.event.discussion.title  }}",
+                          #"subtitle": "Issue No: #${{ toJson(github.event.discussion)  }}"
+                          "URL": "${{ github.event.discussion.html_url }}"
+                      },
+                  }
+              ]
+          }'
+  discussion_commented:
+    runs-on: ubuntu-latest
+    if: github.event.discussion && github.event.comment
+    steps:
+      - run: |
+          #curl -X POST -d '{ "text": "Created discussion comment: ${{ github.event.comment.html_url }}" }' ${{ secrets.SLACK_WEBHOOK_URL }}
+          curl --location --request POST '${{ secrets.WEBHOOK }}' \
+          --header 'Content-Type: application/json' \
+          --data-raw '{
+              "cards": [
+                  {
+                      "header": {
+                          "title": "#${{ github.event.discussion.title  }}",
+                          #"subtitle": "Issue No: #${{ toJson(github.event.discussion)  }}"
+                          "URL": "${{ github.event.discussion.comment.html_url }}"
                       },
                   }
               ]
