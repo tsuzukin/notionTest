@@ -17,9 +17,8 @@ jobs:
               "cards": [
                   {
                       "header": {
-                          "title": "#${{ github.event.discussion.title  }}",
-                          # "subtitle": "Issue No: #${{ toJson(github.event.discussion)  }}"
-                          "URL": "${{ github.event.discussion.html_url }}"
+                          "title": "${{ github.event.discussion.title  }}",
+                          "subtitle": "Issue No: ${{ github.event.discussion.html_url }}"
                       },
                   }
               ]
@@ -35,8 +34,7 @@ jobs:
               "cards": [
                   {
                       "header": {
-                          "title": "#${{ github.event.discussion.title  }}",
-                          # "subtitle": "Issue No: #${{ toJson(github.event.discussion)  }}"
+                          "title": "${{ github.event.discussion.title  }}",
                           "URL": "${{ github.event.discussion.comment.html_url }}"
                       },
                   }
