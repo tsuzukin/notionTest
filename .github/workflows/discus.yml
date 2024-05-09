@@ -20,7 +20,7 @@ jobs:
                   {
                       "header": {
                           "title": "${{ github.event.discussion.title }}",
-                          "subtitle": "${{ github.event.discussion.body }}"
+                          "subtitle": "${{ github.event.user.login }}によって新しいトピックが作られました"
                       },
                       "sections": [
                           {
@@ -29,7 +29,7 @@ jobs:
                                       "buttons": [
                                           {
                                               "textButton": {
-                                                  "text": "OPEN ISSUE",
+                                                  "text": "OPEN DISCUSSION",
                                                   "onClick": {
                                                       "openLink": {
                                                           "url": "${{ github.event.discussion.html_url }}"
@@ -56,7 +56,7 @@ jobs:
                   {
                       "header": {
                           "title": "${{ github.event.discussion.title }}",
-                          "subtitle": "${{ github.event.comment.body }}"
+                          "subtitle": "${{ github.event.user.login }}がコメントしました"
                       },
                       "sections": [
                           {
@@ -65,7 +65,7 @@ jobs:
                                       "buttons": [
                                           {
                                               "textButton": {
-                                                  "text": "OPEN ISSUE",
+                                                  "text": "OPEN DISCUSSION",
                                                   "onClick": {
                                                       "openLink": {
                                                           "url": "${{ github.event.comment.html_url }}"
