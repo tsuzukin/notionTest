@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Git Issue Details
+      run: |
+          echo "Issue creator: ${{ toJson(github.event) }}"
     - name: Git Disc. created
       if: github.event.discussion && !github.event.comment
       run: |
