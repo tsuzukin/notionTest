@@ -11,11 +11,6 @@ jobs:
 
     steps:
     - name: Git Disc. created
-      run: |
-          echo "Issue creator: ${{ toJson(github.event) }}"
-          echo "Issue title: ${{ github.event.discussion.title }}"
-          echo "Issue number: ${{ github.event.discussion.html_url }}"
-    - name: Git Disc. created
       if: github.event.discussion && !github.event.comment
       run: |
           curl --location --request POST '${{ secrets.WEBHOOK }}' \
